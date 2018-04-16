@@ -1,24 +1,32 @@
 import java.util.Scanner;
 public class sinventanas {
 	public static void main(String args[]){
-		
+		String preguntas[]={"Corre y subete a una farola", "Salta a la pata coja"};
 		int totaljugadores;
 		int echo;
+		String pregun, nom;
 		int posicionjugador;
-		String pregunta;
+		
 		String nombres[];
 		int resultados[];
 		boolean seguir=false;
-		
+		int numeroPregunta;
+
 		totaljugadores=pedirJugadores();
 		nombres=pedirNombres( totaljugadores);
+		
+		resultados=crearArrayResultados(totaljugadores);
+
 		do{
-			
 			posicionjugador=elegirjugador(totaljugadores);
-			resultados=crearArrayResultados(totaljugadores);
-			
-			preguntasAleatorias();
-			echo=preguntahacer();
+			numeroPregunta=saltoPregunta(preguntas);
+			int aleatorio=(int)((2-1+0)*Math.random()+1);
+			pregun=preguntas[aleatorio];
+			int ale=(int)((totaljugadores-1+0)*Math.random()+totaljugadores);
+			nom=nombres[ale];
+			System.out.println(nom+" "+pregun);
+			echo=respuestaPregunta();
+
 			if(echo==3){
 				seguir=true;
 			}
@@ -32,7 +40,7 @@ public class sinventanas {
 				resultados=pruebanoHecha ( resultados,  posicionjugador);
 			}
 		}while(seguir==true);
-		
+
 		imprimirResultados( resultados,  nombres);
 	}
 
@@ -74,16 +82,7 @@ public class sinventanas {
 		return resultado;
 	}
 
-	public static void preguntasAleatorias(){
-		String preguntas[]={"Corre y subete a una farola", "Hazle una mamada al de alado"};
-		String pregun;
-		
-		int aleatorio=(int) ((preguntas.length-0+1)*Math.random()+0);
-		pregun=preguntas[aleatorio];
-		System.out.println(pregun);
-	}
-
-	public static int preguntahacer(){
+	public static int respuestaPregunta(){
 		Scanner sc= new Scanner(System.in);
 		int n;
 		do{
@@ -98,31 +97,29 @@ public class sinventanas {
 		return resultados;
 	}
 	public static int [] pruebaIntentada (int [] resultados, int posicionjugador){
-		
-		
+
+
 		resultados[posicionjugador]=resultados[posicionjugador]+1;
-		
+
 		return resultados;
 	}
 	public static int [] pruebanoHecha (int [] resultados, int posicionjugador){
 		resultados[posicionjugador]=resultados[posicionjugador]+0;
 		return resultados;
 	}
-	
+
 	public static void imprimirResultados(int [] resultado, String nombres[]){
 		for(int i=0; i<resultado.length; i++){
 			System.out.println(nombres[i]+" ha conseguido "+resultado[i]);
 		}
 	}
 
+	public static int saltoPregunta(String[] preguntas){
+		int aleatorio=(int) ((preguntas.length-1+0)*Math.random()+preguntas.length);
+		return aleatorio;
+	}
+
 }
-
-
-
-
-
-
-
 
 
 
