@@ -9,4 +9,3 @@ public class ClasePrincipal {
 		 new ClaseControlador(vista, modelo); 
 		 } 
 	}
-

@@ -8,19 +8,21 @@ import javax.swing.JTextField;
 
 public class ClaseVista extends JFrame {
 
-	private static final long serialVersionUID = 1L;
+
 	Container bloqueContenedor = null; 
 	JLabel etiquetaNumero1 = null; 
 	JLabel etiquetaNumero2 = null;
-	JLabel etiquetaResultado = null; 
+
 	JButton botonIniciar = null;
 	JTextField cajaDeTextoNumero1 = null; 
 
+	Container bloqueContenedor2 = null; 
+	JLabel etiquetaResultado = null;
 
-	@SuppressWarnings("deprecation")
+
 	public ClaseVista() {
 		//Aqui introducimos el nombre del jugador a través de un método.
-		bloqueContenedor = getContentPane();
+		bloqueContenedor=getContentPane();
 		bloqueContenedor.setBackground(Color.WHITE);
 
 
@@ -28,14 +30,13 @@ public class ClaseVista extends JFrame {
 		setLayout(new FlowLayout());
 		setSize(600,600);
 		bloqueContenedor.setLayout(null);
-		
+
 
 		etiquetaNumero1 = new JLabel("Bienvenido al Juego");
 
 		cajaDeTextoNumero1 = new JTextField("", 10); 
-		
+
 		etiquetaNumero2 = new JLabel("Introduce tu nombre"); 
-		
 
 		etiquetaResultado = new JLabel("Resultado: ");
 
@@ -52,9 +53,6 @@ public class ClaseVista extends JFrame {
 
 		bloqueContenedor.add(botonIniciar);
 		botonIniciar.setBounds(225, 500, 100, 50);
-				
-
 		setVisible(true);
-
 	}	
 }

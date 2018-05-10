@@ -16,19 +16,19 @@ public class proyecto {
 			imprimirPregunta( i, preguntas);
 			respjug[i]=recogerPregunta();
 		}
-		
+
 		resultado (respuestasCorrectas,  respjug, nombre);
 
 	}
 
 	public static boolean [] respuestasjugadorCrear(String [] preguntas) {
 		boolean respjug[];
-		
+
 		respjug=new boolean[preguntas.length];
 		return respjug;
 	}
-	
-	
+
+
 	public static String recogerNombre() {
 		String nombre;
 		Scanner sc=new Scanner(System.in);
@@ -79,7 +79,7 @@ public class proyecto {
 		pregunta=preguntas[i];
 		System.out.println((i+1)+" "+pregunta+"  V/F");
 	}
-	
+
 	public static boolean recogerPregunta() {
 		Scanner sc=new Scanner(System.in);
 		char resp;
@@ -89,17 +89,17 @@ public class proyecto {
 				System.out.println("Error, responde V/F");
 			}
 		}while(resp!='v' && resp!='f' );
-		
+
 		if(resp=='v') {
 			return true;
 		}else {
 			return false;
 		}
 	}
-	
+
 	public static void resultado (boolean respuestasCorrectas[], boolean respjug[], String nombre) {
 		int tot=0;
-		
+
 		for(int i=0; i<respjug.length; i++ ) {
 			if(respuestasCorrectas[i]==respjug[i]) {
 				tot++;
@@ -107,6 +107,4 @@ public class proyecto {
 		}
 		System.out.println(nombre+" has acertado"+tot+" de "+respjug.length);
 	}
-
-
 }

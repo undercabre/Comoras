@@ -5,7 +5,26 @@ public class ClaseModelo {
 	// Implementa la lógica del objetivo principal del programa 
 
 
-	public static String[] crearPreguntas(){
+	public static int preguntasSiNo(){
+		int puntuacion=0;
+		boolean stop=false;
+		for (int i=0; i<30 && stop==false;i++){
+			Object[] options = {"Si", "No"};
+			int x = JOptionPane.showOptionDialog(null,  crearPreguntas(i),
+					"Pregunta numero "+(i+1),
+					JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+			System.out.println(x);
+			if (x==crearRespuestas(i)){
+				puntuacion++;
+			}else if(x==-1){
+				stop=true;
+			}
+		}
+		return puntuacion;
+	}
+
+
+	public static String crearPreguntas(int i){
 		String preguntas[]= {"Cerca de un 20 % de la población\n mundial es musulmana","Gran Bretaña y Reino Unido son lo mismo","La longitud del Río Nilo es de 6650 kilómetros.",
 				"La phobofobia es la fobia a la filosofía", "Los animales de la especie Homo sapiens son plantígrados.","La Universidad de Cambridge se fundó antes que el Machu Picchu",
 				"La entomología es la ciencia que estudia el desarrollo de los organismos unicelulares","Más del 50 % de la mortalidad infantil se debe al problema del hambre mundial.",
@@ -21,13 +40,15 @@ public class ClaseModelo {
 				"La mayoría de los seres humanos utilizamos solamente el 10% de nuestro cerebro. A menudo se sugiere que mediante algunos procesos una persona puede ser capaz de aprovechar ese potencial no utilizado.",
 				"Dejar un hueso de aguacate en un plato de guacamole impide que este se vuelva de ese color oscuro tan desagradable a la vista.",
 		"Si tiras un céntimo desde lo alto de un rascacielos, puedes atravesarle el cráneo a alguien."};
-		return preguntas;
-	}
-	public static String escogerPreguntas(){
-		int i;
-		String preguntas[];
-		preguntas=crearPreguntas();
-		i=(int)((29-1+1)*Math.random()+1);
 		return preguntas[i];
+	}
+
+
+
+	public static int  crearRespuestas(int i) {
+		int respuestas[]= {0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+				1, 1, 0, 1, 1, 1, 0
+		};
+		return respuestas[i];
 	}
 }
